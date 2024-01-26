@@ -30,7 +30,7 @@ class DropDownWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width * 0.9,
-      height: 68,
+      height: 64,
       child: Center(
         child: DropdownButtonFormField(
           menuMaxHeight: size.height / 2,

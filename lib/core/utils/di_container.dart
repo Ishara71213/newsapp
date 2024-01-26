@@ -3,6 +3,7 @@ import 'package:newsapp/features/News/data/data_sources/remote/news_remote_datas
 import 'package:newsapp/features/News/data/data_sources/remote/news_remote_datasource_impl.dart';
 import 'package:newsapp/features/News/data/repository_impl/news_repository_impl.dart';
 import 'package:newsapp/features/News/domain/repository/news_repository.dart';
+import 'package:newsapp/features/News/domain/usecases/filter_news_usecase.dart';
 import 'package:newsapp/features/News/domain/usecases/get_news_by_country_usecase.dart';
 import 'package:newsapp/features/News/domain/usecases/get_popular_news_usecase.dart';
 import 'package:newsapp/features/News/presentation/home_screen/bloc/cubit/home_cubit.dart';
@@ -14,6 +15,7 @@ Future<void> init() async {
   sl.registerFactory<HomeCubit>(() => HomeCubit(
         getNewsByCountryUsecase: sl.call(),
         getPopularNewsUsecase: sl.call(),
+        filterNewsUsecase: sl.call(),
       ));
 
   //usecase
@@ -23,6 +25,8 @@ Future<void> init() async {
       () => GetNewsByCountryUsecase(repository: sl.call()));
   sl.registerLazySingleton<GetPopularNewsUsecase>(
       () => GetPopularNewsUsecase(repository: sl.call()));
+  sl.registerLazySingleton<FilterNewsUsecase>(
+      () => FilterNewsUsecase(repository: sl.call()));
 
   //repositories
   sl.registerLazySingleton<NewsRepository>(

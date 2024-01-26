@@ -14,6 +14,7 @@ final appThemeData = {
     colorScheme: ColorScheme.light(
       background: LightTheme.kAppBgColor,
       primary: LightTheme.kPrimaryColor,
+      onBackground: LightTheme.kDarkGreyShade,
       secondary: LightTheme.kPrimaryMediumShade,
       primaryContainer: LightTheme.kPrimaryColor,
       tertiary: LightTheme.kDarkGreyShade,

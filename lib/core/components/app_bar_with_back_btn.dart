@@ -16,6 +16,7 @@ class AppBarWithBackBtn extends StatelessWidget implements PreferredSizeWidget {
         textAlign: TextAlign.center,
       ),
       toolbarHeight: 80,
+      surfaceTintColor: Colors.transparent,
       centerTitle: true,
       elevation: 0,
       leading: IconButton(

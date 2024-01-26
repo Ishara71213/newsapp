@@ -34,7 +34,7 @@ class NewsApp extends StatelessWidget {
             darkTheme: appThemeData[AppTheme.dark],
             initialRoute: RouteConst.homeScreen,
             onGenerateRoute: OnGenerateRoute.route,
-            themeMode: ThemeMode.light,
+            themeMode: state,
             home: null,
           );
         },
