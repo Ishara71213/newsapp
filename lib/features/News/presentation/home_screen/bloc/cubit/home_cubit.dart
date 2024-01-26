@@ -31,6 +31,25 @@ class HomeCubit extends Cubit<HomeState> {
 
   Filter _filterGlobal = const Filter();
 
+  void onSerchChange(String query) {
+    emit(HomeInitial());
+    _filterGlobal = _filterGlobal.copyWith(searchQuery: query);
+    emit(SearchSet());
+  }
+
+  void setFilter(Filter filter) {
+    _isFilered = true;
+    _filterGlobal = filter;
+    emit(FilterSet());
+  }
+
+  void clearFilter() {
+    _isFilered = false;
+    Filter filter = const Filter();
+    _filterGlobal = filter;
+    emit(HomeInitial());
+  }
+
   Future<List<Widget>> getAllPopularNews() async {
     List<Widget> result = [];
     try {
@@ -40,43 +59,31 @@ class HomeCubit extends Cubit<HomeState> {
           newsEntity: entity,
         ));
       }
-      emit(PopularNewsSuccess());
     } on SocketException catch (e, stacktrace) {
       errorMsg = e.toString();
-      emit(PopularNewsFaliure());
+      //emit(PopularNewsFaliure());
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     } catch (e, stacktrace) {
       final error = e.toString();
       errorMsg = error;
-      emit(PopularNewsFaliure());
+      // emit(PopularNewsFaliure());
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     }
     return result;
   }
 
-  Future<List<NewsArticleEntity>> getAllNewsByCountry({Filter? filter}) async {
+  Future<List<NewsArticleEntity>> getAllNewsByCountry() async {
     List<NewsArticleEntity> result = [];
     try {
-      if (filter != null) {
-        _isFilered = true;
-        _filterGlobal = filter;
-        result = await filterNewsUsecase.call(_filterGlobal);
-      } else {
-        //to clear filter
-        _filterGlobal = const Filter();
-        _isFilered = false;
-        //search without filter
-        result = await getNewsByCountryUsecase.call();
-      }
-      emit(LoadingSuccess());
+      result = await filterNewsUsecase.call(_filterGlobal);
     } on SocketException catch (e, stacktrace) {
       errorMsg = e.toString();
-      emit(LoadingFaliure());
+      //  emit(LoadingFaliure());
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     } catch (e, stacktrace) {
       final error = e.toString();
       errorMsg = error;
-      emit(LoadingFaliure());
+      // emit(LoadingFaliure());
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     }
     return result;

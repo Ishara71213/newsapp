@@ -21,4 +21,20 @@ class Filter {
         'country=$country&q=$searchQuery&category=$category&from=$dateRange&to=$dateRange&sortBy=$sortBy&pageSize=$pageSize';
     return params;
   }
+
+  Filter copyWith(
+      {String? category,
+      String? sortBy,
+      String? dateRange,
+      String? searchQuery,
+      String? country,
+      String? pageSize}) {
+    return Filter(
+        category: category ?? this.category,
+        sortBy: sortBy ?? this.sortBy,
+        dateRange: dateRange ?? this.dateRange,
+        searchQuery: searchQuery ?? this.searchQuery,
+        country: country ?? this.country,
+        pageSize: pageSize ?? this.pageSize);
+  }
 }

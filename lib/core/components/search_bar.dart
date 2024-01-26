@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:newsapp/features/News/presentation/home_screen/bloc/cubit/home_cubit.dart';
 
 class SearchBarWidget extends StatefulWidget {
   const SearchBarWidget({super.key});
@@ -9,11 +11,21 @@ class SearchBarWidget extends StatefulWidget {
 
 class _SearchBarWidgetState extends State<SearchBarWidget> {
   final TextEditingController _searchController = TextEditingController();
+  late HomeCubit homeCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    homeCubit = BlocProvider.of<HomeCubit>(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onChanged: (value) {},
+      //onChanged: (value) {},
+      onChanged: (value) async {
+        homeCubit.onSerchChange(value);
+      },
       style: Theme.of(context).inputDecorationTheme.counterStyle,
       controller: _searchController,
       autovalidateMode: AutovalidateMode.onUserInteraction,

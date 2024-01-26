@@ -153,10 +153,12 @@ class _FilterScreenState extends State<FilterScreen> {
                   child: FilledButtonCustom(
                     initText: "Filter",
                     onPressed: () async {
+                      homeCubit.clearFilter();
                       Filter filter = Filter(
                           category: selectedCategoryType,
                           sortBy: selectedSortByType);
-                      await homeCubit.getAllNewsByCountry(filter: filter);
+                      homeCubit.setFilter(filter);
+                      Navigator.pop(context);
                     },
                   ),
                 ),
