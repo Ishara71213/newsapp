@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:newsapp/config/routes/route_const.dart';
+import 'package:newsapp/config/theme/Bloc/bloc/theme_bloc.dart';
 import 'package:newsapp/core/components/search_bar_prefsize_widget.dart';
 import 'package:newsapp/core/utils/navigation_handler.dart';
 
@@ -25,10 +27,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
         surfaceTintColor: Colors.transparent,
         title: widget.appBarTitle != ""
             ? Text(widget.appBarTitle)
-            : SvgPicture.asset(
-                'assets/icons/logo-on-light.svg',
-                height: 45,
-              ),
+            : BlocProvider.of<ThemeBloc>(context).isDarkTheme
+                ? SvgPicture.asset(
+                    'assets/icons/logo-on-dark.svg',
+                    height: 45,
+                  )
+                : SvgPicture.asset(
+                    'assets/icons/logo-on-light.svg',
+                    height: 45,
+                  ),
         titleTextStyle: Theme.of(context).textTheme.titleLarge,
         elevation: 0,
         leadingWidth: 70,

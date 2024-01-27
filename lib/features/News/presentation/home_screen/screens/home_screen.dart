@@ -13,12 +13,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String imageUrl =
-      'https://www.freep.com/gcdn/authoring/authoring-images/2024/01/19/PDTF/72285952007-lincoln-digital-experience-driver-pov.jpg?crop=5430,3054,x0,y0&width=3200&height=1800&format=pjpg&auto=webp';
+  late HomeCubit homeCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    homeCubit = BlocProvider.of<HomeCubit>(context);
+  }
 
   @override
   Widget build(BuildContext context) {
-    HomeCubit homeCubit = BlocProvider.of<HomeCubit>(context);
     Size size = MediaQuery.of(context).size;
     ScrollController scrollController = ScrollController();
     return Scaffold(
@@ -26,43 +30,39 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            BlocBuilder<HomeCubit, HomeState>(
-              builder: (context, state) {
-                return FutureBuilder(
-                    future: homeCubit.getAllPopularNews(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return CarouselSlider(
-                            items: snapshot.data!,
-                            options: CarouselOptions(
-                              height: 180,
-                              //aspectRatio: 16 / 9,
-                              viewportFraction: 0.9,
-                              initialPage: 0,
-                              enableInfiniteScroll: true,
-                              reverse: false,
-                              autoPlay: true,
-                              autoPlayInterval: const Duration(seconds: 16),
-                              autoPlayAnimationDuration:
-                                  const Duration(milliseconds: 1200),
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              enlargeCenterPage: true,
-                              enlargeFactor: 0.2,
-                              //onPageChanged: callbackFunction,
-                              scrollDirection: Axis.horizontal,
-                            ));
-                      } else {
-                        return SizedBox(
-                          height: size.height - 500,
-                          child: Center(
-                              child: CircularProgressIndicator(
-                            color: Theme.of(context).colorScheme.primary,
-                          )),
-                        );
-                      }
-                    });
-              },
-            ),
+            FutureBuilder(
+                future: homeCubit.getAllPopularNews(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return CarouselSlider(
+                        items: snapshot.data!,
+                        options: CarouselOptions(
+                          height: 180,
+                          //aspectRatio: 16 / 9,
+                          viewportFraction: 0.9,
+                          initialPage: 0,
+                          enableInfiniteScroll: true,
+                          reverse: false,
+                          autoPlay: true,
+                          autoPlayInterval: const Duration(seconds: 16),
+                          autoPlayAnimationDuration:
+                              const Duration(milliseconds: 1200),
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enlargeCenterPage: true,
+                          enlargeFactor: 0.2,
+                          //onPageChanged: callbackFunction,
+                          scrollDirection: Axis.horizontal,
+                        ));
+                  } else {
+                    return SizedBox(
+                      height: size.height - 500,
+                      child: Center(
+                          child: CircularProgressIndicator(
+                        color: Theme.of(context).colorScheme.primary,
+                      )),
+                    );
+                  }
+                }),
             const SizedBox(height: 20),
             Column(
               children: [

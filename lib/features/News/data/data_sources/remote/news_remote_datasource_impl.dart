@@ -29,7 +29,7 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
         });
         return itemList;
       } else {
-        throw Exception("Something went wrong");
+        throw Exception(response.body);
       }
     } catch (e) {
       rethrow;

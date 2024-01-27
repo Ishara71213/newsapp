@@ -9,6 +9,8 @@ sealed class HomeState extends Equatable {
 
 final class HomeInitial extends HomeState {}
 
+final class Loading extends HomeState {}
+
 final class FilterSet extends HomeState {}
 
 final class SearchSet extends HomeState {}

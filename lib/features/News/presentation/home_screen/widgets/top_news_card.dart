@@ -47,10 +47,7 @@ class TopNewsCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    NewsCardAction(
-                      time: newsEntity.postDuration ?? "",
-                      category: newsEntity.source?["name"] ?? "",
-                    )
+                    NewsCardAction(newsEntity: newsEntity)
                   ],
                 ),
               )),

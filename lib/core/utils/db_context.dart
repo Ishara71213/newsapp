@@ -1,4 +1,5 @@
 import 'package:newsapp/core/constants/db_name.dart';
+import 'package:newsapp/core/constants/db_tables.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DbContext {
@@ -16,42 +17,32 @@ class DbContext {
   Future<Database> _initDb(String filePath) async {
     final dbPath = await getDatabasesPath();
     final path = "$dbPath$filePath";
-
+    //databaseFactory.deleteDatabase(path);
     return await openDatabase(path, version: 1, onCreate: _createDb);
   }
 
   Future _createDb(Database db, int version) async {
     const String idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     const String textType = 'TEXT NOT NULL';
+    const String textTypeNullable = 'TEXT';
     //const String boolType = 'BOOLEAN NOT NULL';
-    const String integerType = 'INTEGER NOT NULL';
+    //const String integerType = 'INTEGER NOT NULL';
 
-    // await db.execute('''
-    //       CREATE TABLE ${DbTables.users} (
-    //         ${UsersFields.id} $idType,
-    //         ${UsersFields.firstName} $textType,
-    //         ${UsersFields.lastName} $textType,
-    //         ${UsersFields.email} $textType,
-    //         ${UsersFields.mobile} $textType,
-    //         ${UsersFields.dob} $textType,
-    //         ${UsersFields.gender} $textType,
-    //         ${UsersFields.password} $textType,
-    //         ${UsersFields.imagePath} $textType
-    //       )
-    // ''');
-
-    // await db.execute('''
-    //       CREATE TABLE ${DbTables.contacts} (
-    //         ${ContactsFields.id} $idType,
-    //         ${ContactsFields.firstName} $textType,
-    //         ${ContactsFields.lastName} $textType,
-    //         ${ContactsFields.email} $textType,
-    //         ${ContactsFields.mobile} $textType,
-    //         ${ContactsFields.imagePath} $textType,
-    //         ${ContactsFields.createdDate} $textType,
-    //         ${ContactsFields.createdUser} $integerType
-    //       )
-    // ''');
+    await db.execute('''
+          CREATE TABLE ${DbTables.savednews} (
+            ${NewsFields.id} $idType,
+            ${NewsFields.sourceId} $textTypeNullable,
+            ${NewsFields.sourceName} $textTypeNullable,
+            ${NewsFields.author} $textTypeNullable,
+            ${NewsFields.title} $textType, 
+            ${NewsFields.description} $textTypeNullable,
+            ${NewsFields.url} $textTypeNullable,
+            ${NewsFields.urlToImage} $textTypeNullable,
+            ${NewsFields.publishedAt} $textTypeNullable,
+            ${NewsFields.content} $textTypeNullable,
+            ${NewsFields.isSaved} $textTypeNullable
+          )
+    ''');
   }
 
   // Future<UserModel> create(UserModel model) async {

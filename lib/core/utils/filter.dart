@@ -11,14 +11,14 @@ class Filter {
   const Filter(
       {this.category = "",
       this.sortBy = SortBy.publishedAt,
-      this.dateRange = "",
+      this.dateRange = "from=&to=",
       this.searchQuery = "",
       this.pageSize = "100",
       this.country = "us"});
 
   String queryParamsBuilder() {
     String params =
-        'country=$country&q=$searchQuery&category=$category&from=$dateRange&to=$dateRange&sortBy=$sortBy&pageSize=$pageSize';
+        'country=$country&q=$searchQuery&category=$category&$dateRange&sortBy=$sortBy&pageSize=$pageSize';
     return params;
   }
 

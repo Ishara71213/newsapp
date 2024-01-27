@@ -104,10 +104,11 @@ final appThemeData = {
         fontSize: 18,
         fontWeight: FontWeight.w500,
         color: LightTheme.kDarkGreyShade,
+        height: 1.4,
       ),
       titleSmall: GoogleFonts.poppins(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
         color: LightTheme.kDarkGreyShade,
       ),
       //News card title
@@ -163,14 +164,18 @@ final appThemeData = {
     colorScheme: ColorScheme.dark(
       background: DarkTheme.kAppBgColor,
       primary: DarkTheme.kPrimaryColor,
+      onBackground: DarkTheme.kDarkGreyShade,
       secondary: DarkTheme.kPrimaryMediumShade,
       primaryContainer: DarkTheme.kPrimaryColor,
+      tertiary: DarkTheme.kGreyLightShade,
       onPrimaryContainer: DarkTheme.kWhiteColor,
       error: DarkTheme.kWarnningColor,
       errorContainer: DarkTheme.kWarnningColor,
       onErrorContainer: DarkTheme.kWhiteColor,
-      onTertiaryContainer: DarkTheme.kGreyColor,
+      onTertiaryContainer: DarkTheme.kWhiteColor,
       tertiaryContainer: DarkTheme.kAppBgDarkShade,
+      surface: DarkTheme.inputBoxTextColor,
+      surfaceVariant: DarkTheme.inputBoxTextColor,
     ),
     //Filled Button Styles
     filledButtonTheme: FilledButtonThemeData(
@@ -186,69 +191,117 @@ final appThemeData = {
     )),
     //Input Decorations
     inputDecorationTheme: InputDecorationTheme(
-      hintStyle: GoogleFonts.poppins(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        color: DarkTheme.kDarkGreyShade,
-      ),
-      labelStyle: GoogleFonts.poppins(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: DarkTheme.kGreyMediumShade,
-      ),
-      prefixStyle: GoogleFonts.roboto(
+        fillColor: DarkTheme.inputBoxTextColor,
+        hintStyle: GoogleFonts.poppins(
           fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: DarkTheme.kGreyColor,
+        ),
+        labelStyle: GoogleFonts.poppins(
+          fontSize: 14,
           fontWeight: FontWeight.w500,
-          color: DarkTheme.kDarkGreyShade,
-          letterSpacing: 0.2),
-      suffixStyle: GoogleFonts.roboto(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          color: DarkTheme.kDarkGreyShade,
-          letterSpacing: 0.2),
-      counterStyle: GoogleFonts.roboto(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          color: DarkTheme.kDarkGreyShade,
-          letterSpacing: 0.2),
-    ),
+          color: DarkTheme.kGreyMediumShade,
+        ),
+        prefixStyle: GoogleFonts.roboto(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: DarkTheme.kDarkGreyShade,
+            letterSpacing: 0.2),
+        suffixStyle: GoogleFonts.roboto(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: DarkTheme.kDarkGreyShade,
+            letterSpacing: 0.2),
+        counterStyle: GoogleFonts.roboto(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: DarkTheme.kGreyLightShade,
+            letterSpacing: 0.2),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+                width: 2,
+                style: BorderStyle.solid,
+                color: DarkTheme.kAppBgMediumShade)),
+        errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+                width: 2,
+                style: BorderStyle.solid,
+                color: DarkTheme.kErrorColor)),
+        focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+                width: 2,
+                style: BorderStyle.solid,
+                color: DarkTheme.kErrorColor)),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+                width: 1.4,
+                style: BorderStyle.solid,
+                color: DarkTheme.kAppBgMediumShade))),
+
+    //text Theme Styles
     textTheme: TextTheme(
+      //App bar title and other titles
       titleLarge: GoogleFonts.roboto(
         fontSize: 20,
         fontWeight: FontWeight.w700,
-        color: DarkTheme.kDarkGreyShade,
+        color: DarkTheme.kGreyLightShade,
       ),
       titleMedium: GoogleFonts.roboto(
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: FontWeight.w500,
-        color: DarkTheme.kDarkGreyShade,
+        color: DarkTheme.kGreyLightShade,
+        height: 1.4,
       ),
       titleSmall: GoogleFonts.poppins(
-        fontSize: 14,
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: DarkTheme.kGreyLightShade,
+      ),
+      //News card title
+      displayLarge: GoogleFonts.poppins(
+        fontSize: 16,
         fontWeight: FontWeight.w500,
-        color: DarkTheme.kDarkGreyShade,
+        color: DarkTheme.kAppBgLightestShade,
+        letterSpacing: 0.1,
+        height: 1.24,
+      ),
+      //Button text style
+      displayMedium: GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: DarkTheme.kWhiteColor,
       ),
       displaySmall: GoogleFonts.poppins(
         fontSize: 14,
         fontWeight: FontWeight.w500,
         color: DarkTheme.kPrimaryColor,
       ),
-      //Button text style
-      displayMedium: GoogleFonts.poppins(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: LightTheme.kAppBgColor,
-      ),
+      //Input Field Text style
+      bodyLarge: GoogleFonts.roboto(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: DarkTheme.kDarkGreyShade,
+          letterSpacing: 0.15),
       //body Text
       bodyMedium: GoogleFonts.roboto(
         fontSize: 16,
         fontWeight: FontWeight.w400,
-        color: DarkTheme.kDarkGreyShade,
+        color: DarkTheme.kGreyLightShade,
       ),
       bodySmall: GoogleFonts.roboto(
         fontSize: 16,
         fontWeight: FontWeight.w400,
         color: DarkTheme.kDarkGreyShade,
+      ),
+      //tag lines
+      labelSmall: GoogleFonts.roboto(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: DarkTheme.kGreyColor,
       ),
     ),
   ),

@@ -43,7 +43,6 @@ dependencies:
   #service locator
   get_it: ^7.6.0
   google_fonts: ^5.1.0
-  sqflite: ^2.3.0
   intl: ^0.18.1
   #manage cache
   flutter_cache_manager: ^3.3.1
@@ -51,7 +50,11 @@ dependencies:
   http: ^1.0.0
   syncfusion_flutter_datepicker: ^22.1.37
   carousel_slider: ^4.2.1
-  
+  url_launcher: ^6.1.11
+  share_plus: ^7.0.2
+  # Data base
+  sqflite: ^2.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

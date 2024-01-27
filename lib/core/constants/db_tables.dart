@@ -1,50 +1,32 @@
 class DbTables {
-  static const String users = "users";
-  static const String contacts = "contacts";
+  static const String savednews = "savednews";
 }
 
-class UsersFields {
+class NewsFields {
   static final List<String> columns = [
     id,
-    firstName,
-    lastName,
-    email,
-    dob,
-    gender,
-    mobile,
-    password,
-    imagePath
+    sourceId,
+    sourceName,
+    author,
+    title,
+    description,
+    url,
+    urlToImage,
+    publishedAt,
+    content,
+    isSaved,
   ];
 
+  //table Headders name
   static const String id = "_id";
-  static const String firstName = "firstName";
-  static const String lastName = "lastName";
-  static const String email = "email";
-  static const String dob = "dob";
-  static const String gender = "gender";
-  static const String mobile = "mobile";
-  static const String password = "password";
-  static const String imagePath = "imagePath";
-}
-
-class ContactsFields {
-  static final List<String> columns = [
-    id,
-    firstName,
-    lastName,
-    email,
-    mobile,
-    imagePath,
-    createdDate,
-    createdUser
-  ];
-
-  static const String id = "_id";
-  static const String firstName = "firstName";
-  static const String lastName = "lastName";
-  static const String email = "email";
-  static const String mobile = "mobile";
-  static const String imagePath = "imagePath";
-  static const String createdDate = "createdDate";
-  static const String createdUser = "createdUser";
+  static const String sourceId = "sourceId";
+  static const String sourceName = "sourceName";
+  static const String author = "author";
+  static const String title = "title";
+  static const String description = "description";
+  static const String url = "url";
+  static const String urlToImage = "urlToImage";
+  static const String publishedAt = "publishedAt";
+  static const String content = "content";
+  static const String isSaved = "isSaved";
 }

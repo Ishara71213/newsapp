@@ -9,6 +9,20 @@ class FilterNewsUsecase {
       : _repository = repository;
 
   Future<List<NewsArticleEntity>> call(Filter filter) async {
-    return await _repository.getNewsByCountry(filter);
+    List<NewsArticleEntity> newsList =
+        await _repository.getNewsByCountry(filter);
+    List<NewsArticleEntity> newsListWithSavedData = [];
+    newsList.map((e) async {}).toList();
+
+    for (NewsArticleEntity entity in newsList) {
+      var result = await _repository.getNewsByUrl(entity.url!);
+      if (result != null) {
+        newsListWithSavedData
+            .add(entity.copyWith(isSaved: true, id: result.id));
+      } else {
+        newsListWithSavedData.add(entity);
+      }
+    }
+    return newsListWithSavedData;
   }
 }

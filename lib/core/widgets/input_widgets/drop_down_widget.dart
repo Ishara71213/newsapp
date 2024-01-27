@@ -57,6 +57,8 @@ class DropDownWidget extends StatelessWidget {
               : const InputDecoration.collapsed(hintText: ''),
           items: items,
           value: selectedValue,
+          dropdownColor: Theme.of(context).colorScheme.tertiaryContainer,
+          style: Theme.of(context).textTheme.bodyMedium,
           onChanged: isDropdownLoading ? null : onChanged,
         ),
       ),

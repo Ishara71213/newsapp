@@ -4,12 +4,13 @@ import 'package:newsapp/core/common/screens/splash_screen.dart';
 import 'package:newsapp/core/common/screens/splash_screen_data_loader.dart';
 import 'package:newsapp/features/News/presentation/filter_screen/screens/filter_screen.dart';
 import 'package:newsapp/features/News/presentation/home_screen/screens/home_screen.dart';
+import 'package:newsapp/features/News/presentation/saved_news/screens/saved_news_screen.dart';
 import 'package:newsapp/features/News/presentation/settings/screens/settings_screen.dart';
 import 'package:newsapp/features/News/presentation/single_news/screens/single_news_screen.dart';
 
 class OnGenerateRoute {
   static Route<dynamic> route(RouteSettings settings) {
-    //final args = settings.arguments;
+    final args = settings.arguments;
     String routeName = settings.name.toString();
     switch (settings.name) {
       case RouteConst.initialRoute:
@@ -24,11 +25,12 @@ class OnGenerateRoute {
         return materialBuilder(widget: const HomeScreen(), route: routeName);
       case RouteConst.singleNewsScreen:
         return materialBuilder(
-            widget: const SingleNewsScreen(), route: routeName);
+            widget: SingleNewsScreen(data: args), route: routeName);
       case RouteConst.filterScreen:
         return materialBuilder(widget: const FilterScreen(), route: routeName);
       case RouteConst.savedNewsScreen:
-        return materialBuilder(widget: const HomeScreen(), route: routeName);
+        return materialBuilder(
+            widget: const SavedNewsScreen(), route: routeName);
       case RouteConst.settingsScreen:
         return materialBuilder(
             widget: const SettingsScreen(), route: routeName);

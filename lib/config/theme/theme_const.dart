@@ -16,6 +16,7 @@ TextStyle kwarningText = GoogleFonts.poppins(
 class LightTheme {
   static Color kPrimaryColor = const Color(0xFFEE5253);
   static Color kPrimaryMediumShade = const Color(0xFFFFCACA);
+  static Color dividerColor = const Color(0XFFE0E0E0);
 
   static Color kAppBgColor = const Color(0xFFFFFFFF);
   static Color kAppBgMediumShade = const Color(0xFFF7F7F7);
@@ -51,19 +52,20 @@ class LightTheme {
 class DarkTheme {
   static Color kPrimaryColor = const Color(0xFFEE5253);
   static Color kPrimaryMediumShade = const Color(0xFFFFCACA);
+  static Color dividerColor = const Color(0xFF1E1E1E);
 
-  static Color kAppBgColor = const Color(0xFFFFFFFF);
-  static Color kAppBgMediumShade = const Color(0xFFF7F7F7);
-  static Color kAppBgDarkShade = const Color(0xFFF1F1F1);
+  static Color kAppBgColor = const Color(0xFF131213);
+  static Color kAppBgMediumShade = const Color(0xFF1E1E1E);
+  static Color kAppBgDarkShade = const Color(0xFF282828);
 
-  static Color kWhiteColor = const Color(0xFFFFFFFF);
+  static Color kWhiteColor = const Color(0xFFF6F6F6);
   static Color kPeoBlackColor = const Color(0xFF000000);
   static Color kBlackColor = const Color(0xFF131213);
   static Color kBlackMediumShade = const Color(0xFF1E1E1E);
 
-  static Color inputBoxTextColor = const Color(0xFFF3F3F3);
+  static Color inputBoxTextColor = const Color(0xFF262729);
 
-  static Color kGreyColor = const Color(0xFFABABAB);
+  static Color kGreyColor = const Color(0xFF888888);
 
   static Color kGreyMediumShade = const Color(0xFF5C5C5C);
   static Color kDarkGreyShade = const Color(0xFF363333);

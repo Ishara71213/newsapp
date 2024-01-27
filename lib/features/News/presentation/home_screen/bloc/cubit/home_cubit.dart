@@ -31,6 +31,11 @@ class HomeCubit extends Cubit<HomeState> {
 
   Filter _filterGlobal = const Filter();
 
+  void refresh() {
+    emit(HomeInitial());
+    emit(Loading());
+  }
+
   void onSerchChange(String query) {
     emit(HomeInitial());
     _filterGlobal = _filterGlobal.copyWith(searchQuery: query);
@@ -61,12 +66,10 @@ class HomeCubit extends Cubit<HomeState> {
       }
     } on SocketException catch (e, stacktrace) {
       errorMsg = e.toString();
-      //emit(PopularNewsFaliure());
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     } catch (e, stacktrace) {
       final error = e.toString();
       errorMsg = error;
-      // emit(PopularNewsFaliure());
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     }
     return result;
@@ -78,12 +81,10 @@ class HomeCubit extends Cubit<HomeState> {
       result = await filterNewsUsecase.call(_filterGlobal);
     } on SocketException catch (e, stacktrace) {
       errorMsg = e.toString();
-      //  emit(LoadingFaliure());
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     } catch (e, stacktrace) {
       final error = e.toString();
       errorMsg = error;
-      // emit(LoadingFaliure());
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     }
     return result;
