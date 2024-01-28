@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsapp/features/News/domain/entities/news_article_entity.dart';
 import 'package:newsapp/features/News/domain/usecases/delete_saved_news_usecase.dart';
@@ -26,7 +27,7 @@ class SavedNewsCubit extends Cubit<SavedNewsState> {
     //emit(RefreshSuccess());
   }
 
-  Future<int> saveNews(NewsArticleEntity entity) async {
+  Future<int> saveNews(NewsArticleEntity entity, BuildContext context) async {
     try {
       //emit(SavedNewsLoading());
       NewsArticleEntity result = await savedNewsUsecase.call(entity);
@@ -36,7 +37,17 @@ class SavedNewsCubit extends Cubit<SavedNewsState> {
       }
     } on DatabaseException catch (e, stacktrace) {
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Data base Failure"),
+        ),
+      );
     } catch (e, stacktrace) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Something went wrong"),
+        ),
+      );
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     }
     return 0;

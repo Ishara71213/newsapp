@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             FutureBuilder(
-                future: homeCubit.getAllPopularNews(),
+                future: homeCubit.getAllPopularNews(context),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return CarouselSlider(
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 BlocBuilder<HomeCubit, HomeState>(
                   builder: (context, state) {
                     return FutureBuilder(
-                        future: homeCubit.getAllNewsByCountry(),
+                        future: homeCubit.getAllNewsByCountry(context),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             return ListView.builder(

@@ -55,7 +55,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeInitial());
   }
 
-  Future<List<Widget>> getAllPopularNews() async {
+  Future<List<Widget>> getAllPopularNews(BuildContext context) async {
     List<Widget> result = [];
     try {
       List<NewsArticleEntity> entityList = await getPopularNewsUsecase.call();
@@ -66,25 +66,46 @@ class HomeCubit extends Cubit<HomeState> {
       }
     } on SocketException catch (e, stacktrace) {
       errorMsg = e.toString();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.message.toString()),
+        ),
+      );
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     } catch (e, stacktrace) {
       final error = e.toString();
       errorMsg = error;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString()),
+        ),
+      );
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     }
     return result;
   }
 
-  Future<List<NewsArticleEntity>> getAllNewsByCountry() async {
+  Future<List<NewsArticleEntity>> getAllNewsByCountry(
+      BuildContext context) async {
     List<NewsArticleEntity> result = [];
     try {
       result = await filterNewsUsecase.call(_filterGlobal);
     } on SocketException catch (e, stacktrace) {
       errorMsg = e.toString();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.message.toString()),
+        ),
+      );
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     } catch (e, stacktrace) {
       final error = e.toString();
       errorMsg = error;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString()),
+        ),
+      );
       dev.log(e.toString(), name: "ERROR", stackTrace: stacktrace);
     }
     return result;

@@ -94,7 +94,7 @@ class _NewsCardActionState extends State<NewsCardAction> {
 
   Future<void> saveUnsave() async {
     if (!isSaved) {
-      int id = await savedNewsCubit.saveNews(widget.newsEntity);
+      int id = await savedNewsCubit.saveNews(widget.newsEntity, context);
       if (id != 0) {
         if (mounted) {
           setState(() {
